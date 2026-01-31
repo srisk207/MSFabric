@@ -1708,6 +1708,7 @@ def scan_tenant_structure():
         print("Report saved successfully.")
     else:
         print("No accessible items found.")
-```
 scan_tenant_structure()
+```
+
 
