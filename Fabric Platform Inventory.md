@@ -1,57 +1,31 @@
-# ==============================================================================
-# MICROSOFT FABRIC PLATFORM INVENTORY & CATALOG
-# ==============================================================================
-# Description:
-#   This script scans a Microsoft Fabric tenant to inventory all items (Workspaces, 
-#   Lakehouses, Warehouses, Reports, etc.), maps lineage, audits security (Users/Roles), 
-#   and parses deep metadata (TMSL) for Semantic Models.
-#
-# Prerequisites:
-#   - Microsoft Fabric Capacity
-#   - 'sempy' library installed (pip install semantic-link)
-#   - Spark Session active (Run in Fabric Notebook)
-# ==============================================================================
-```python
-def extract_text_between_brackets(header):
-    import re
-    match = re.search(r'\[(.*?)\]', header)
-    return match.group(1) if match else header
-```
+### MICROSOFT FABRIC PLATFORM INVENTORY & CATALOG
+### Description:
+###   This script scans a Microsoft Fabric tenant to inventory all items (Workspaces, 
+###   Lakehouses, Warehouses, Reports, etc.), maps lineage, audits security (Users/Roles), 
+###   and parses deep metadata (TMSL) for Semantic Models.
+### Prerequisites:
+###   - Microsoft Fabric Capacity
+###   - 'sempy' library installed (pip install semantic-link)
+###   - Spark Session active (Run in Fabric Notebook)
+### ==============================================
+
+
+# Code Start 
 
 ```python
+# Import core Fabric libraries and set Spark configuration
 import sempy.fabric as fabric
 import pandas as pd
 spark.conf.set("spark.sql.caseSensitive", "true")
 import time
 ```
-
 ```python
-
-
-import sempy.fabric as fabric
-import inspect
-
-# List only functions
-functions = [f for f in dir(fabric) if inspect.isfunction(getattr(fabric, f))]
-print("Functions:", functions)
-
-# List only classes
-classes = [c for c in dir(fabric) if inspect.isclass(getattr(fabric, c))]
-print("Classes:", classes)
-
-
-```
-
-```python
-
-
-import sempy.fabric as fabric
-
-# List all attributes (modules, classes, functions, constants)
-print(dir(fabric))
-
-
-
+# Utility function to clean up column headers
+# Extracts text inside brackets [ ] if present, otherwise returns original header
+def extract_text_between_brackets(header):
+    import re
+    match = re.search(r'\[(.*?)\]', header)
+    return match.group(1) if match else header
 ```
 # Fabric All Items load a table
 ```python
