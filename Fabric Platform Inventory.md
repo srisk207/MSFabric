@@ -1,4 +1,16 @@
-#	Fabric Platform Inventory Notebook
+# ==============================================================================
+# MICROSOFT FABRIC PLATFORM INVENTORY & CATALOG
+# ==============================================================================
+# Description:
+#   This script scans a Microsoft Fabric tenant to inventory all items (Workspaces, 
+#   Lakehouses, Warehouses, Reports, etc.), maps lineage, audits security (Users/Roles), 
+#   and parses deep metadata (TMSL) for Semantic Models.
+#
+# Prerequisites:
+#   - Microsoft Fabric Capacity
+#   - 'sempy' library installed (pip install semantic-link)
+#   - Spark Session active (Run in Fabric Notebook)
+# ==============================================================================
 ```python
 def extract_text_between_brackets(header):
     import re
